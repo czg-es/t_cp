@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+html {
+  scroll-behavior: smooth;
+}
+
+/* Javascript loader */
+.loader {
+  border: 16px solid #f3f3f352; 
+  border-top: 16px solid #ff0000; 
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  margin: auto;
+}
+/* To wrap the loader in a 100% div------------------*/
+/*
+.loader_container{
+  position: absolute;
+  left: 0px;
+  margin: 0px;
+  z-index: 9;
+  width: 100vw;
+  height: 99vh;
+  background-color: black;
+}
+ */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.hide-loader{
+display:none;
+}
+
+body{
+    background: black;
+    margin: 0;
+    padding: 0;
+    color:floralwhite;
+    padding: 2.5em;
+
+}
+h1{
+    font-family: 'Creepster', cursive;
+    font-size: 5rem;
+    font-weight:inherit;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    text-shadow: 5px 5px #ff0000;
+    cursor: pointer;
+    color: whitesmoke;
+}
+h2{
+    font-family: 'Creepster', cursive;
+    font-size: 3rem;
+    font-weight:inherit;
+    padding-top: 0rem;
+    margin-top: 1rem;
+    color: red;
+    text-shadow: 2px 2px #fffaf076;
+    letter-spacing: .2rem;
+}
+.output{
+    font-family:'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.header{
+  display: flex;
+}
+#dashboard{
+    padding: 1rem;
+    background: #ff00001a;
+    border-radius: 1rem;
+    
+}
+
+#desc{
+    /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    font-family:'Courier New', Courier, monospace;
+    padding: 0rem 2rem;
+    font-size: 1rem;
+    position: relative;
+    margin-left: auto;
+    /* top:0;
+    right: 0; */
+    text-align: right;
+    max-width: 40vw;
+}
+#tabla{
+    margin-top: 3rem;
+    max-height: 40vh;
+    overflow-y: scroll;
+    background: #ff00003e;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+.link{
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all .2s ease-in-out;
+  color: floralwhite;
+  text-decoration: none;
+}
+.link:hover{
+  /* background: #ffffff49; */
+  font-size: 1.1rem;
+  color: yellow;
+}
+.change_number{
+  position: sticky;
+  top:0;
+  float: right;
+  background: #0000002e;
+  color: floralwhite;
+}
+/* Py-script Only ----------------------------------------------------------- */
+#btnRun{
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+/* HIDDEN BUT INTERACTED BY JAVASCRIPT */
+.parentBox{
+  display: none;
+}
+/* ------------------------------------------------------------------------- */
+
+/* SCROLLBAR-------------------------- */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ff00005a;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ff0000;
+}
+/* Media query------------------------------------------------- */
+@media (max-width: 600px) {
+  #dashboard{
+    width: 95%;
+  }
+  .header{
+    display: flex;
+    flex-direction: column;
+  }
+  h1{
+    font-size: 3rem;
+  }
+  h2{
+    font-size: 2rem;
+  }
+  #desc{
+    margin-left: 0px;
+    text-align: left;
+    max-width: 90vw;
+    padding: 0.2rem;
+  }
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" id='todo'>
+    <head>
+        <title>Today's creepypasta Info</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/m_style.css" rel="stylesheet">
+    </head>
+    <body id='body'>
+        <div class="selection" id="selection">
+            <div id="in" name="infndex" onclick="setiFrame('info.html',this.id)" >INFO</div>
+            <div id="js" name="jindex" onclick="setiFrame('js/jindex.html',this.id)">JAVASCRIPT</div>
+            <div id="py" name="pyndex" onclick="setiFrame('py/pyndex.html',this.id)" >PYSCRIPT</div>
+            <div class="name" name="name" onclick="change_mode()" ><span id="emoji"></span></div>
+        </div>
+        <iframe src="info.html" id="frame" class="iframe-placeholder"  name="frame" onload="parent.window.scrollTo(0, 0);"></iframe>
+        <a href="#"><div class="czg">CZG 2022</div></a> 
+    <script>
+    let mode = 1;
+    function change_mode(){
+        if(mode == 0){
+            day();
+            return;
+        }
+        night();
+    }
+    btn = document.getElementById('emoji');
+    function day(){
+        document.documentElement.style.setProperty('filter', 'invert(1)');
+        document.getElementById('body').style.setProperty('filter', 'hue-rotate(180deg)');
+        mode = 1;
+        btn.textContent ='☀️';
+        btn.style.setProperty('filter', 'hue-rotate(180deg) invert(1)');
+        parent.window.name = 'day' ;
+    }
+    // removes filter to html element
+    function night(){
+        document.documentElement.style.setProperty('filter', '');
+        document.getElementById('body').style.setProperty('filter', 'hue-rotate(0deg)');
+        mode = 0;
+        btn.textContent ='🌙';
+        btn.style.setProperty('filter', '');
+        parent.window.name = 'night' ;
+    }
+    
+    function clear_head_style(){
+        let header = document.getElementById('selection');
+        for (let i = 0; i < header.children.length; i++) {
+            header.children[i].style.setProperty('background',''); 
+        }
+        
+    }
+    
+    function setiFrame(src, id) {
+        clear_head_style();
+        document.getElementById ("frame").contentWindow. document.location.href = src;
+        document.getElementById(id).style.setProperty('background', '#ff000033');
+        return false;
+    }  
+
+
+    parent.window.scrollTo(0, 0);
+    change_mode();
+    setiFrame('info.html','in');
+
+
+    </script>
+    </body>
+</html>

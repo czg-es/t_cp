@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+body{
+    margin: 0px;
+    padding: 0px;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    margin: 0;
+    padding: 0;
+    color:floralwhite;
+    overflow: hidden;
+}
+
+iframe{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    border: 0px;
+}
+.selection{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    background: #ff634715;
+    font-family: 'Creepster', cursive;
+    font-size: 2rem;
+    z-index: 99;
+}
+.selection>div{
+    padding: 0.1em 0.8rem;
+    color: floralwhite;
+    text-shadow: 2px 2px red;
+}
+.selection > div:hover{
+    color: red;
+    text-shadow: 2px 2px grey;
+    /* box-shadow: 2px 2px 2px 1px white; */
+}
+.name{
+    margin-left: auto;
+    white-space: nowrap;
+}
+.iframe-placeholder
+{
+   background: url('./circle-spin.gif') 0px 0px no-repeat;
+   margin: auto;
+}
+.czg{
+    background: black;
+    position: absolute;
+    color: bisque;
+    bottom: 0px;
+    right: 0px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    padding: 0.1rem 1rem;
+    border-radius: 2rem;
+    margin-right: 1rem;
+}

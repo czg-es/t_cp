@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="creepypastas_2.js"></script>
+    <script defer src="main.js"></script>
+    <title>Js Creepypasta</title>
+</head>
+
+<body >
+<!-- <div class="loader_container" id="loader_container"></div> --> <!-- used to wrap the loader and ocupy the whole page -->
+    <div class="loader" id="loader">  </div>
+    <div class="header">
+        <div class="h_t">
+            <h1 id="head" onclick="change_s()" title="Random Story">TODAY'S <span>CREEPY</span><span>PASTA</span></h1>
+            <h2 id="title"></h2>
+        </div>
+        <div id="desc"></div>
+    </div>
+    <div id="dashboard" class="center output" id="out"></div>
+    <div id="tabla" class="outt output">
+        <input  class="change_number" onchange ="change_s(this.value);timed_to_top();window.scrollTo(0,0);" ></input>
+    </div>
+    <div class="selector">
+        <script >
+            /* scroll to top of parent window to show the header */
+            function to_top(){
+                parent.window.scrollTo(0, 0);
+            }
+            function timed_to_top(){
+                const myTimeout = setTimeout(to_top, 50);
+            }
+            parent.document.title = document.title;
+        </script>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</body>
+</html>

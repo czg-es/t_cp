@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <link rel="stylesheet" href="../css/style.css">
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+    <title>Py Creepypasta</title>
+    <py-env>
+        - pandas
+        - paths:
+            - ./creepypastas_1.csv   
+    </py-env>
+</head>
+<body>
+    <div class="header">
+        <div class="h_t">
+            <h1 id="head" onclick="set_story_random();" title="Random Story">TODAY'S CREEPYPASTA</h1>
+            <h2 id="title"></h2>
+        </div>
+        <div id="desc"></div>
+    </div>
+        <div id="dashboard" class="center output" id="out"></div>
+        <div id="tabla" class="outt output">
+            <input  class="change_number" onchange ="set_story_number(this.value)" ></input>
+        </div>
+        <div class="selector">
+    </div>
+
+    <py-script output="dashboard" >
+        #from pyodide.http import open_url
+        import js
+        import random
+        import pandas as pd
+        pd.set_option('display.max_rows', None)
+        pd.set_option('display.max_columns', None)
+        pd.set_option('display.max_colwidth', None)
+            
+        df = pd.read_csv("./creepypastas_1.csv")
+        dfn =  df
+
+        rando = random.choice(range(len(dfn))) # generar indice al azar
+        
+        def change_story(index):
+            current = dfn.iloc[[index]]  # extraer fila correspondiente al indice generado
+
+            history = current['body'].to_string() # columna body a string (el cuerpo de la historia)
+            number = history.split(" ",1)[0]  #numero de historia extraido del campo body
+            title = current['story_name']
+            tags = current['tags']
+            rating = current['average_rating']
+            read_time = current['estimated_reading_time']
+            publish_date = current['publish_date']
+            categories = current['categories']
+            history = history.split(" ",1)[1] #strip number from history
+
+            pyscript.write('dashboard', history.replace('\\n','&lt;br&gt; ').replace('\\r', ' ') ) # to replace certain strings within the story
+            
+            pyscript.write('desc','Categories: &lt;br&gt; '+ categories.to_string().split(" ",1)[1].replace('\\n','').replace('\\r',''))
+            pyscript.write('desc','Read Time: &lt;br&gt; '+ read_time.to_string().split(" ",1)[1],append=True)
+            pyscript.write('desc','Publish Date: &lt;br&gt; '+ publish_date.to_string().split(" ",1)[1],append=True)
+            pyscript.write('desc','Rating: &lt;br&gt; '+ rating.to_string().split(" ",1)[1],append=True)
+            
+            pyscript.write('title',title.to_string(),append=False)
+                    
+        change_story(rando)
+            
+        </py-script>
+
+    <py-script output="title"></py-script>
+
+    <py-script output="desc"></py-script>
+
+    <py-script output="tabla">
+
+        counter = 0 
+        parent = Element("tabla")
+
+        for i,j in  zip(dfn['story_name'],dfn['average_rating'] ):
+            line = f"-{i}-📈: {j} Nº: {counter} "
+            one_link = f"&lt;a class='link' onclick='set_story_number({counter})'&gt;{line}&lt;/a&gt;"
+            counter +=1
+            parent.write(one_link,append=True)
+        
+    </py-script>
+    <py-repl id='repl'>rando = random.choice(range(len(dfn)));change_story(rando)</py-repl>
+<script >
+    /* Bit of a hack, interact with py-repl through javascript. Define the content of the repl and hit the "run button" */
+    var boton = document.getElementById("btnRun"); 
+
+    function push_btn(){
+        document.getElementById("btnRun").click();
+    }
+
+    function push_it(){
+        boton = document.getElementById("btnRun");
+        boton.click();
+        window.scrollTo(0, 0);
+    }
+
+    function set_story_number(number){
+        document.getElementsByClassName('cm-activeLine')[0].innerHTML = `change_story(${number})`;
+        const myTimeout = setTimeout(push_it, 50);
+    }
+
+    function set_story_random(){
+        document.getElementsByClassName('cm-activeLine')[0].innerHTML = 
+            `rando = random.choice(range(len(dfn)));change_story(rando)`;
+        const myTimeout = setTimeout(push_it, 50);
+    }
+    
+    parent.document.title = document.title;
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</body>
+</html>
+

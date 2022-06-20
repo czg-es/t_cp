@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/i_style.css">
+    <title>INFO</title>
+</head>
+<body>
+    <div class="info" >
+        <p> 
+            El objetivo de este proyecto es comparar el rendimiento y funcionalidad de pyscript y javascript. 
+            <br>
+            Recogido de internet un dataset con 3510 relatos cortos de terror, conocidos como creepypastas
+            <br>
+            El archivo de origen es un csv de 195019 lineas. Se ha dividido a la mitad
+            <br>
+            La primera mitad la procesa Pyscript a través de pandas, cargando el archivo .csv
+            a un dataframe.
+            <br>
+            La segunda mitad es cargada a tráves de un objeto en formato json con javascript
+            <br>
+            En ambos casos se carga el dataset y se selecciona un registro al azar para mostrar.
+            <br>
+            Cada dataset ocupa alrededor de 20mb por eso al cargar la página desde un smarthphone tarda un buen rato.
+            <br>
+            Una vez cargada la página se puede elegir una historia de la lista o especificar el número de historía en la entrada input.
+            En la sección inferior de la página.
+            <br>
+            Al estár el dataset cargado, la transición entre historias es practicamente instantánea.
+            <br>
+            <br>
+        </p> 
+        <p></p> 
+        <script>
+            parent.document.title = document.title;
+        </script>
+    </div>
+    
+</body>
+</html>
