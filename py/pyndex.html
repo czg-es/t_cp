@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=2.0">
 
-    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <link rel="stylesheet" href="./pyscript.css" />
     <link rel="stylesheet" href="../css/style.css">
-    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <script defer src="./pyscript.js"></script>
 
     <title>Py Creepypasta</title>
     <py-env>
         - pandas
         - paths:
-            - ./creepypastas_1.csv   
+          - ./creepypastas_1.csv
     </py-env>
 </head>
+
 <body>
     <div class="header">
         <div class="h_t">
@@ -24,14 +26,14 @@
         </div>
         <div id="desc"></div>
     </div>
-        <div id="dashboard" class="center output" id="out"></div>
-        <div id="tabla" class="outt output">
-            <input  class="change_number" onchange ="set_story_number(this.value)" ></input>
-        </div>
-        <div class="selector">
+    <div id="dashboard" class="center output" id="out"></div>
+    <div id="tabla" class="outt output">
+        <input class="change_number" onchange="set_story_number(this.value)"></input>
+    </div>
+    <div class="selector">
     </div>
 
-    <py-script output="dashboard" >
+    <py-script output="dashboard">
         #from pyodide.http import open_url
         import js
         import random
@@ -69,7 +71,7 @@
                     
         change_story(rando)
             
-        </py-script>
+    </py-script>
 
     <py-script output="title"></py-script>
 
@@ -85,42 +87,41 @@
             one_link = f"&lt;a class='link' onclick='set_story_number({counter})'&gt;{line}&lt;/a&gt;"
             counter +=1
             parent.write(one_link,append=True)
-        
     </py-script>
     <py-repl id='repl'>rando = random.choice(range(len(dfn)));change_story(rando)</py-repl>
-<script >
-    /* Bit of a hack, interact with py-repl through javascript. Define the content of the repl and hit the "run button" */
-    var boton = document.getElementById("btnRun"); 
+    <script>
+        /* Bit of a hack, interact with py-repl through javascript. Define the content of the repl and hit the "run button" */
+        var boton = document.getElementById("btnRun");
 
-    function push_btn(){
-        document.getElementById("btnRun").click();
-    }
+        function push_btn() {
+            document.getElementById("btnRun").click();
+        }
 
-    function push_it(){
-        boton = document.getElementById("btnRun");
-        boton.click();
-        window.scrollTo(0, 0);
-    }
+        function push_it() {
+            boton = document.getElementById("btnRun");
+            boton.click();
+            window.scrollTo(0, 0);
+        }
 
-    function set_story_number(number){
-        document.getElementsByClassName('cm-activeLine')[0].innerHTML = `change_story(${number})`;
-        const myTimeout = setTimeout(push_it, 50);
-    }
+        function set_story_number(number) {
+            document.getElementsByClassName('cm-activeLine')[0].innerHTML = `change_story(${number})`;
+            const myTimeout = setTimeout(push_it, 50);
+        }
 
-    function set_story_random(){
-        document.getElementsByClassName('cm-activeLine')[0].innerHTML = 
-            `rando = random.choice(range(len(dfn)));change_story(rando)`;
-        const myTimeout = setTimeout(push_it, 50);
-    }
-    
-    parent.document.title = document.title;
-</script>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+        function set_story_random() {
+            document.getElementsByClassName('cm-activeLine')[0].innerHTML =
+                `rando = random.choice(range(len(dfn)));change_story(rando)`;
+            const myTimeout = setTimeout(push_it, 50);
+        }
+
+        parent.document.title = document.title;
+    </script>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 </body>
-</html>
 
+</html>
